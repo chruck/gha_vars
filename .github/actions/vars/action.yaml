@@ -2,4 +2,4 @@ outputs: {}
 
 runs:
   steps:
-    - run: echo "ACTION31='action-thirtyone'"
+    - run: echo "ACTION32='action-thirtytwo'"

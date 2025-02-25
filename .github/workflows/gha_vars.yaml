@@ -84,5 +84,6 @@ jobs:
       - id: step30
         uses: ./.github/actions/vars
 
-      - run: |
-        echo "ACTION31 is ${ACTION31} (or ${{steps.step30.outputs.ACTION31}})"
+      - id: step31
+        run: |
+        echo "ACTION32 is ${ACTION32} (or ${{steps.step30.outputs.ACTION32}})"
