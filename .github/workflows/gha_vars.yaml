@@ -81,6 +81,9 @@ jobs:
       - id: step29
         run: echo "input1 is ${{inputs.input1}}"
 
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
       - id: step30
         uses: ./.github/actions/vars
 
