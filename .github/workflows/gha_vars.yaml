@@ -1,0 +1,88 @@
+name: GitHub Action Variables
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchonize
+      - reopened
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      input1:
+        description: "desc of input-1"
+        required: false
+        default: "input-1"
+        type: string
+
+env:
+  ENV2: ${{vars.VAR3}}
+  SECRET4: ${{secrets.SECRET5}}
+
+jobs:
+  job6:
+    runs-on: ubuntu-latest
+
+    env:
+      ENV7: "environment8"
+
+    outputs:
+      var9: ${{steps.step10.outputs.var11}}
+
+    steps:
+
+      - id: step10
+        run: echo "var11='value12'" >> "${GITHUB_OUTPUT}"
+
+      - id: step13
+        run: echo "var14='value15'" >> "${GITHUB_ENV}"
+
+      - id: step16
+        run: echo "var14 is ${var14} (or ${{env.var14}} when not 'run:')"
+
+      - id: step17
+        run: echo "ENV7 is ${ENV7}"
+
+      - id: step18
+        run: echo "var11 is ${{steps.step10.outputs.var11}}"
+
+  job19:
+    runs-on: ubuntu-latest
+
+    needs: job6
+
+    steps:
+      - id: step20
+        run: echo "var9 is ${{needs.job6.outputs.var9}}"
+
+      - id: step21
+        run: |
+          {
+            echo 'MULTILINEVAR22<<EOF'
+            echo "first line of MULTILINEVAR22, going to add 'pwd':"
+            pwd
+            echo "last line of MULTILINEVAR22"
+            echo 'EOF'
+          } >> "${GITHUB_ENV}"
+
+      - id: step23
+        run: echo "MULTILINEVAR22 is '${MULTILINEVAR22}'"
+
+      - id: step24
+        run: echo "OUT25='output26'" | tee -a "${GITHUB_OUTPUT}"
+
+      - id: step27
+        env:
+          ENV28: ${{steps.step24.outputs.OUT25}}
+        run: echo "ENV28 is ${ENV28}"
+
+      - id: step29
+        run: echo "input1 is ${{inputs.input1}}"
+
+      - id: step30
+        uses: ./.github/actions/vars
+
+      - run: |
+        echo "ACTION31 is ${ACTION31} (or ${{steps.step30.outputs.ACTION31}})"
