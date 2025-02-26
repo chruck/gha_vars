@@ -6,3 +6,6 @@ runs:
   steps:
     - run: echo "ACTION32='action-thirtytwo'" >> "${GITHUB_ENV}"
       shell: bash
+
+    - run: echo "ACTION33='action-thirtythree'" >> "${GITHUB_OUTPUT}"
+      shell: bash
