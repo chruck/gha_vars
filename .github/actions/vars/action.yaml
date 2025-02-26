@@ -1,7 +1,8 @@
-outputs: {}
+#inputs: {}
+#outputs: {}
 
 runs:
   using: composite
   steps:
-    - run: echo "ACTION32='action-thirtytwo'"
+    - run: echo "ACTION32='action-thirtytwo'" >> "${GITHUB_ENV}"
       shell: bash
