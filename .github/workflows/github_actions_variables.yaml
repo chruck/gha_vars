@@ -94,5 +94,6 @@ jobs:
 
       - id: step31
         run: |
-          echo "ACTION32 is ${ACTION32}"
+          echo "ACTION32 is ${ACTION32}"  # not sure why single quotes
+          # not sure why doesn't work, compare to dorny/paths-filter:
           echo "ACTION33 is ${{steps.step30.outputs.ACTION33}}"
