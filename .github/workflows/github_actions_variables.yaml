@@ -85,7 +85,7 @@ jobs:
         uses: actions/checkout@v4
 
       - id: step30
-        uses: ./.github/actions/vars
+        uses: .github/actions/vars
 
       - id: step31
         run: |
