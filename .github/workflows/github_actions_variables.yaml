@@ -94,4 +94,5 @@ jobs:
 
       - id: step31
         run: |
-          echo "ACTION32 is ${ACTION32} (or ${{steps.step30.outputs.ACTION32}})"
+          echo "ACTION32 is ${ACTION32}"
+          echo "ACTION33 is ${{steps.step30.outputs.ACTION33}}"
