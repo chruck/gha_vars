@@ -33,6 +33,10 @@ jobs:
 
     steps:
 
+      - run: |
+          echo "ENV2 is ${ENV2} or ${{env.ENV2}}?"
+          echo "SECRET4 is ${SECRET4} or ${{env.SECRET4}}"
+
       - id: step10
         run: echo "var11='value12'" >> "${GITHUB_OUTPUT}"
 
