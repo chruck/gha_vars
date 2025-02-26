@@ -3,3 +3,4 @@ outputs: {}
 runs:
   steps:
     - run: echo "ACTION32='action-thirtytwo'"
+      shell: bash
